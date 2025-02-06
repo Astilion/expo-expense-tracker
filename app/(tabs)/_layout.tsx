@@ -3,20 +3,22 @@ import React from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function TabLayout() {
+  const tabScreenOptions = {
+    headerStyle: { backgroundColor: 'purple' },
+    headerTintColor: 'gold',
+    tabBarActiveTintColor: 'gold',
+    tabBarActiveBackgroundColor: 'purple',
+    tabBarInactiveBackgroundColor: 'purple',
+  };
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: 'gold',
-        tabBarActiveBackgroundColor: 'purple',
-        tabBarInactiveTintColor: 'lightgray',
-        tabBarInactiveBackgroundColor: 'purple',
-      }}
-    >
+    <Tabs screenOptions={tabScreenOptions}>
       <Tabs.Screen
         name='index'
         options={{
           title: 'Recent',
           headerTitle: 'Recent Expenses',
+          headerStyle: { backgroundColor: 'purple' },
+          headerTintColor: 'white',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name='hourglass' size={size} color={color} />
           ),
