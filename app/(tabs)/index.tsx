@@ -1,4 +1,5 @@
 import { Text, View } from 'react-native';
+import TotalExpenses from '@/app-example/components/TotalExpenses';
 
 export default function Index() {
   return (
@@ -10,7 +11,7 @@ export default function Index() {
         backgroundColor: 'rgb(60, 17, 109)',
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <TotalExpenses />
     </View>
   );
 }
