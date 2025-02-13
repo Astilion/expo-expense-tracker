@@ -5,8 +5,9 @@ export default function AppExpenses() {
     <View
       style={{
         flex: 1,
-        justifyContent: 'center',
+        padding: 14,
         alignItems: 'center',
+        backgroundColor: 'rgb(60, 17, 109)',
       }}
     >
       <Text>All expenses Screen</Text>
