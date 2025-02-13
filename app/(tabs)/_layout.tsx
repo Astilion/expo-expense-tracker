@@ -1,10 +1,12 @@
-import { Tabs } from 'expo-router';
+import { Tabs, useRouter } from 'expo-router';
 import React from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Pressable } from 'react-native';
 
 export default function TabLayout() {
+  const router = useRouter();
   const addExpenseHandler = () => {
+    router.push('/manageExpenses');
     console.log('Add new expense');
   };
   const tabScreenOptions = {
