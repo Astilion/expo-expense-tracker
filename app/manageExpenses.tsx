@@ -43,14 +43,14 @@ export default function ManageExpenses() {
             <Button
               title='Cancel'
               onPress={cancelHandler}
-              color='rgb(194, 172, 48)'
+              color='rgb(184, 184, 184)'
             />
           </View>
           <View style={styles.button}>
             <Button
               title={isEditing ? 'Update' : 'Add'}
               onPress={confirmHandler}
-              color='rgb(194, 172, 48)'
+              color='rgb(184, 184, 184)'
             />
           </View>
         </View>
