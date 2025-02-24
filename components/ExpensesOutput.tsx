@@ -1,8 +1,6 @@
 import ExpensesList from './ExpensesList';
 import TotalExpenses from './TotalExpenses';
-
-export const ExpenseOutput = () => {
-  const DUMMY_EXPENSES = [
+export const DUMMY_EXPENSES = [
     {
       id: 'e1',
       title: 'A book',
@@ -34,6 +32,8 @@ export const ExpenseOutput = () => {
       date: new Date('2021-02-28'),
     },
   ];
+export const ExpenseOutput = () => {
+
   return (
     <>
       <TotalExpenses expenses={DUMMY_EXPENSES} />

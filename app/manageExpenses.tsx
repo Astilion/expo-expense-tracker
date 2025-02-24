@@ -1,20 +1,26 @@
-import { View, StyleSheet, TextInput, Button } from 'react-native';
+import { View, StyleSheet, TextInput, Button, Alert } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-
+import { DUMMY_EXPENSES } from '@/components/ExpensesOutput';
+import { Expense } from '@/types/types';
+import { useState, useEffect } from 'react';
 export default function ManageExpenses() {
   const router = useRouter();
   const params = useLocalSearchParams();
+  const expenseId = params.expenseId as string;
   const isEditing = !!params.expenseId;
+
 
   function cancelHandler() {
     router.back();
   }
 
   function confirmHandler() {
+
     router.back();
   }
 
   function deleteExpenseHandler() {
+    console.log('Deleting expense:', expenseId);
     router.back();
   }
 
