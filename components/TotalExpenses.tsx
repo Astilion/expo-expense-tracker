@@ -1,10 +1,17 @@
 import { Text, View, StyleSheet } from 'react-native';
+import { Expense } from '@/types/types';
 
-export default function TotalExpenses() {
+interface TotalExpensesProps {
+  expenses: Expense[];
+}
+export default function TotalExpenses({ expenses }: TotalExpensesProps) {
+  const expensesSum = expenses.reduce((sum, expense) => {
+    return sum + expense.amount;
+  }, 0);
   return (
     <View style={styles.container}>
       <Text style={styles.totalText}>Total:</Text>
-      <Text style={styles.ammountText}>$240.54</Text>
+      <Text style={styles.ammountText}>${expensesSum.toFixed(2)}</Text>
     </View>
   );
 }

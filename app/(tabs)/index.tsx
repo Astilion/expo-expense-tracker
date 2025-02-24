@@ -1,6 +1,5 @@
-import { Text, View } from 'react-native';
-import TotalExpenses from '@/components/TotalExpenses';
-import Expense from '@/components/Expense';
+import { View } from 'react-native';
+import { ExpenseOutput } from '@/components/ExpensesOutput';
 
 export default function Index() {
   return (
@@ -12,8 +11,7 @@ export default function Index() {
         backgroundColor: 'rgb(60, 17, 109)',
       }}
     >
-      <TotalExpenses />
-      <Expense/>
+      <ExpenseOutput />
     </View>
   );
 }
