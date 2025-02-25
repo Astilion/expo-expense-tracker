@@ -1,5 +1,6 @@
 import { createContext, useReducer, useState, ReactNode } from 'react';
 import { Expense } from '@/types/types';
+import { DUMMY_EXPENSES } from '@/components/ExpensesOutput';
 
 type ExpensesContextProviderProps = {
   children: ReactNode;
@@ -38,8 +39,19 @@ type ExpensesAction =
 function expensesReducer(state: Expense[], action: ExpensesAction): Expense[] {
   switch (action.type) {
     case 'ADD':
+      const id = new Date().toString() + Math.random().toString();
+      return [{ ...action.payload, id: id }, ...state];
     case 'UPDATE':
+      const updatableExpenseIndex = state.findIndex(
+        (expense) => expense.id === action.payload.id,
+      );
+      const updatableExpense = state[updatableExpenseIndex];
+      const updatedItem = { ...updatableExpense, ...action.payload.data };
+      const updatedExpenses = [...state];
+      updatedExpenses[updatableExpenseIndex] = updatedItem;
+      return updatedExpenses;
     case 'DELETE':
+      return state.filter((expense) => expense.id !== action.payload);
     default:
       return state;
   }
@@ -47,7 +59,7 @@ function expensesReducer(state: Expense[], action: ExpensesAction): Expense[] {
 export default function ExpensesContextProvider({
   children,
 }: ExpensesContextProviderProps) {
-  const [expensesState, dispatch] = useReducer(expensesReducer, []);
+  const [expensesState, dispatch] = useReducer(expensesReducer, DUMMY_EXPENSES);
   function addExpense(expenseData: {
     title: string;
     amount: number;
