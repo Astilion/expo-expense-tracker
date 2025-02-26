@@ -1,6 +1,10 @@
-import { View, Text } from 'react-native';
+import { ExpensesContext } from '@/store/expenses-context';
+import { useContext } from 'react';
+import { ExpenseOutput } from '@/components/ExpensesOutput';
+import { View } from 'react-native';
 
 export default function AppExpenses() {
+  const expensesCtx = useContext(ExpensesContext);
   return (
     <View
       style={{
@@ -10,7 +14,7 @@ export default function AppExpenses() {
         backgroundColor: 'rgb(60, 17, 109)',
       }}
     >
-      <Text>All expenses Screen</Text>
+      <ExpenseOutput expenses={expensesCtx.expenses} />
     </View>
   );
 }

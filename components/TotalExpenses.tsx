@@ -5,9 +5,11 @@ interface TotalExpensesProps {
   expenses: Expense[];
 }
 export default function TotalExpenses({ expenses }: TotalExpensesProps) {
-  const expensesSum = expenses.reduce((sum, expense) => {
-    return sum + expense.amount;
-  }, 0);
+  const expensesSum = expenses && expenses.length > 0
+    ? expenses.reduce((sum, expense) => {
+        return sum + expense.amount;
+      }, 0)
+    : 0;
   return (
     <View style={styles.container}>
       <Text style={styles.totalText}>Total:</Text>
