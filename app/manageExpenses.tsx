@@ -1,30 +1,39 @@
 import { View, StyleSheet, TextInput, Button, Alert } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { DUMMY_EXPENSES } from '@/components/ExpensesOutput';
-import { Expense } from '@/types/types';
 import { useContext } from 'react';
 import { ExpensesContext } from '@/store/expenses-context';
 export default function ManageExpenses() {
   const router = useRouter();
   const params = useLocalSearchParams();
 
- const expenseCtx = useContext(ExpensesContext)
+  const expenseCtx = useContext(ExpensesContext);
 
   const expenseId = params.expenseId as string;
   const isEditing = !!params.expenseId;
-
 
   function cancelHandler() {
     router.back();
   }
 
   function confirmHandler() {
-
+    if (isEditing) {
+      expenseCtx.updateExpense(expenseId, {
+        title: 'test',
+        amount: 19.99,
+        date: new Date('2022-05-19'),
+      });
+    } else {
+      expenseCtx.addExpense({
+        title: 'test',
+        amount: 19.99,
+        date: new Date('2022-05-19'),
+      });
+    }
     router.back();
   }
 
   function deleteExpenseHandler() {
-    expenseCtx.deleteExpense(expenseId)
+    expenseCtx.deleteExpense(expenseId);
     router.back();
   }
 
